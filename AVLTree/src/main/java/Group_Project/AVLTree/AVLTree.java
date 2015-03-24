@@ -2,7 +2,7 @@ package Group_Project.AVLTree;
 	
 public class AVLTree {
 	
-	private AVLNode root;
+	AVLNode root;
 	private AVLNode searchedNode;
 	
 	//Inserts the specified node in the tree
@@ -11,7 +11,7 @@ public class AVLTree {
 	}
 	
 	//Traverses the tree to insert nodes at the end while keeping balance
-	public AVLNode insert(int data, AVLNode Node){
+	private AVLNode insert(int data, AVLNode Node){
 		if(Node == null){//if the node is the first node, it is root
 			return new AVLNode(null,null,data);			
 		}
@@ -46,7 +46,7 @@ public class AVLTree {
 				height = rightH + 1;
 			}
 		}
-		Node.height = height;
+		//Node.height = height;
 		return height;
 	}
 	//Right Right rotation Case

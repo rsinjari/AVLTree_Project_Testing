@@ -46,7 +46,7 @@ public class TreeManager {
 			return;
 		}else{
 			inorderPrint(n.left);
-			System.out.print(n.data);
+			System.out.print(n.data+" ");
 			inorderPrint(n.right);
 		}
 	}
@@ -55,7 +55,7 @@ public class TreeManager {
 		if(n == null){
 			return;
 		}else{
-			System.out.print(n.data);
+			System.out.print(n.data+" ");
 			preorderPrint(n.left);
 			preorderPrint(n.right);
 		}
@@ -67,7 +67,7 @@ public class TreeManager {
 		}else{
 			postorderPrint(n.left);
 			postorderPrint(n.right);
-			System.out.print(n.data);
+			System.out.print(n.data+" ");
 		}
 	}
 }
