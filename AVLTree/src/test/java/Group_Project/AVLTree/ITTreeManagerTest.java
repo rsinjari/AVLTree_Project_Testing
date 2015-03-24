@@ -1,11 +1,22 @@
 package Group_Project.AVLTree;
 
+import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 public class ITTreeManagerTest {
+	
+	TreeManager tm;
+	
+	@Before
+	public void initialize(){
+		tm = new TreeManager();
+	}
+	
 	@Test
 	public void testCreateTree(){
-		throw new RuntimeException("test method not implemented");
+		tm.createTree();
+		Assert.assertNotNull(tm.tree);
 	}
 	
 	@Test

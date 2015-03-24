@@ -5,9 +5,16 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class AVLTreeTest {
+	
+	AVLTree t;
+	@Before
+	public void initialize(){
+		t = new AVLTree();
+	}
+	
 	@Test
 	public void testInsertNode(){
-		throw new RuntimeException("test method not impleented");
+		t.insertNode(1);
 	}
 	@Test
 	public void testFindHight(){
