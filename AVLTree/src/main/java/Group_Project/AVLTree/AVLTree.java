@@ -8,8 +8,25 @@ public class AVLTree {
 	//Inserts the specified node in the tree
 	public void insertNode(int data){
 		root = insert(data, root);
+		updateParents(this.root);
 	}
-	
+	//Updates the parents needed for the deleteion function
+	public void updateParents(AVLNode Node){
+		
+		if(Node == null){
+			return;
+		}else{
+			if(Node.left != null){
+				Node.left.parent = Node;
+			}
+			if(Node.right != null){
+				Node.right.parent = Node;
+			}
+			updateParents(Node.left);
+			updateParents(Node.right);
+		}
+		
+	}
 	//Traverses the tree to insert nodes at the end while keeping balance
 	public AVLNode insert(int data, AVLNode Node){
 		if(Node == null){//if the node is the first node, it is root
@@ -86,7 +103,15 @@ public class AVLTree {
 		return llCase(Node);
 	}
 	//deletes the specified node from the tree
-	void deleteNode(AVLNode Node){
+	void deleteNode(int data){
+		if(searchValue(data)){
+			if(searchedNode.left == null && searchedNode.right == null){
+				searchedNode.parent = null;
+			}
+		}
+	}
+	
+	void delete(AVLNode Node){
 		//TODO: 
 	}
 	//checks the balance of the tree
