@@ -3,13 +3,30 @@ package Group_Project.AVLTree;
 public class AVLTree {
 	
 	AVLNode root;
-	private AVLNode searchedNode;
+	AVLNode searchedNode;
 	
 	//Inserts the specified node in the tree
 	public void insertNode(int data){
 		root = insert(data, root);
+		updateParents(this.root);
 	}
-	
+	//Updates the parents needed for the deleteion function
+	public void updateParents(AVLNode Node){
+		
+		if(Node == null){
+			return;
+		}else{
+			if(Node.left != null){
+				Node.left.parent = Node;
+			}
+			if(Node.right != null){
+				Node.right.parent = Node;
+			}
+			updateParents(Node.left);
+			updateParents(Node.right);
+		}
+		
+	}
 	//Traverses the tree to insert nodes at the end while keeping balance
 	private AVLNode insert(int data, AVLNode Node){
 		if(Node == null){//if the node is the first node, it is root
@@ -86,7 +103,15 @@ public class AVLTree {
 		return llCase(Node);
 	}
 	//deletes the specified node from the tree
-	void deleteNode(AVLNode Node){
+	void deleteNode(int data){
+		if(searchValue(data)){
+			if(searchedNode.left == null && searchedNode.right == null){
+				searchedNode.parent = null;
+			}
+		}
+	}
+	
+	void delete(AVLNode Node){
 		//TODO: 
 	}
 	//checks the balance of the tree
@@ -121,32 +146,24 @@ public class AVLTree {
 	
 	//Searching for a specific Node by value
 	boolean searchValue(int i){
-		
-		boolean found = false;		
-		found = search(root,i);
-		if(!found){
-			searchedNode = null;
+			
+		this.searchedNode = search(this.root, i);
+		if(this.searchedNode != null){
+			return true;
 		}
-		return found;
+		return false;
 	}
 	
-	boolean search(AVLNode r, int i){
-		boolean found = false;
-		
-		while((r != null) && !found){
-			int data  = r.data;
-			if(i < data){
-				r = r.left;
-			}
-			else if(i > data){
-				r = r.right;
-			}
-			else{
-				found = true;
-				searchedNode = r;
-			}
-			found = search(r,i);
+	AVLNode search(AVLNode r, int i){
+		if(r.data == i){
+			return r;
+		}else if(r.data < i){
+			return search(r.right, i);
+		}else{
+			return search(r.left, i);
 		}
-		return found;
 	}
+	
+	
+	
 }

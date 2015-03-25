@@ -8,7 +8,7 @@ public class AVLNode {
 
 	public AVLNode left;
 	public AVLNode right;
-
+	public AVLNode parent;
 	public int data;
 	public int height;
 	
