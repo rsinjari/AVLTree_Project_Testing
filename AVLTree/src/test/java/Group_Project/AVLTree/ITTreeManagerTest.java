@@ -16,6 +16,15 @@ public class ITTreeManagerTest {
 	@Test
 	public void testCreateTree(){
 		tm.createTree();
+		
+		tm.tree.insertNode(5);
+		tm.tree.insertNode(6);
+		tm.tree.insertNode(4);
+		
+		System.out.println(tm.tree.searchValue(4));
+		System.out.println(tm.tree.search(tm.tree.root, 4).data);
+		//System.out.println(tm.tree.root.left.parent.data);
+		
 		Assert.assertNotNull(tm.tree);
 	}
 	

@@ -2,7 +2,7 @@ package Group_Project.AVLTree;
 	
 public class AVLTree {
 	
-	private AVLNode root;
+	public AVLNode root;
 	private AVLNode searchedNode;
 	
 	//Inserts the specified node in the tree
@@ -63,7 +63,7 @@ public class AVLTree {
 				height = rightH + 1;
 			}
 		}
-		Node.height = height;
+		//Node.height = height;
 		return height;
 	}
 	//Right Right rotation Case
@@ -146,32 +146,24 @@ public class AVLTree {
 	
 	//Searching for a specific Node by value
 	boolean searchValue(int i){
-		
-		boolean found = false;		
-		found = search(root,i);
-		if(!found){
-			searchedNode = null;
+			
+		this.searchedNode = search(this.root, i);
+		if(this.searchedNode != null){
+			return true;
 		}
-		return found;
+		return false;
 	}
 	
-	boolean search(AVLNode r, int i){
-		boolean found = false;
-		
-		while((r != null) && !found){
-			int data  = r.data;
-			if(i < data){
-				r = r.left;
-			}
-			else if(i > data){
-				r = r.right;
-			}
-			else{
-				found = true;
-				searchedNode = r;
-			}
-			found = search(r,i);
+	AVLNode search(AVLNode r, int i){
+		if(r.data == i){
+			return r;
+		}else if(r.data < i){
+			return search(r.right, i);
+		}else{
+			return search(r.left, i);
 		}
-		return found;
 	}
+	
+	
+	
 }
