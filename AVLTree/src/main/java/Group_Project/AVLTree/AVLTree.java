@@ -1,9 +1,13 @@
 package Group_Project.AVLTree;
+
+import java.util.ArrayList;
+import java.util.List;
+
 	
 public class AVLTree {
 	
-	public AVLNode root;
-	private AVLNode searchedNode;
+	AVLNode root;
+	AVLNode searchedNode;
 	
 	//Inserts the specified node in the tree
 	public void insertNode(int data){
@@ -28,7 +32,7 @@ public class AVLTree {
 		
 	}
 	//Traverses the tree to insert nodes at the end while keeping balance
-	public AVLNode insert(int data, AVLNode Node){
+	private AVLNode insert(int data, AVLNode Node){
 		if(Node == null){//if the node is the first node, it is root
 			return new AVLNode(null,null,data);			
 		}
@@ -104,7 +108,7 @@ public class AVLTree {
 	}
 	//deletes the specified node from the tree
 	void deleteNode(int data){
-		if(searchValue(data)){
+		if(searchValueExists(data)){
 			if(searchedNode.left == null && searchedNode.right == null){
 				searchedNode.parent = null;
 			}
@@ -145,13 +149,20 @@ public class AVLTree {
 	}
 	
 	//Searching for a specific Node by value
-	boolean searchValue(int i){
-			
+	boolean searchValueExists(int i){	
 		this.searchedNode = search(this.root, i);
 		if(this.searchedNode != null){
 			return true;
 		}
 		return false;
+	}
+	
+	AVLNode searchValue(int i){	
+		AVLNode n = search(this.root, i);
+		if(n != null){
+			return n;
+		}
+		return null;
 	}
 	
 	AVLNode search(AVLNode r, int i){
@@ -164,6 +175,17 @@ public class AVLTree {
 		}
 	}
 	
+	ArrayList<AVLNode> searchRange(int low, int high){
+		ArrayList<AVLNode> nodeList = new ArrayList<AVLNode>();
+		AVLNode n = null;
+		for(int i = low; i <= high; i++){
+			n = searchValue(i);
+			if(n != null){
+				nodeList.add(n);
+			}
+		}
+		return nodeList;
+	}
 	
 	
 }
