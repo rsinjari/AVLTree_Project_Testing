@@ -12,25 +12,8 @@ public class AVLTree {
 	//Inserts the specified node in the tree
 	public void insertNode(int data){
 		root = insert(data, root);
-		updateParents(this.root);
 	}
-	//Updates the parents needed for the deleteion function
-	public void updateParents(AVLNode Node){
-		
-		if(Node == null){
-			return;
-		}else{
-			if(Node.left != null){
-				Node.left.parent = Node;
-			}
-			if(Node.right != null){
-				Node.right.parent = Node;
-			}
-			updateParents(Node.left);
-			updateParents(Node.right);
-		}
-		
-	}
+	
 	//Traverses the tree to insert nodes at the end while keeping balance
 	private AVLNode insert(int data, AVLNode Node){
 		if(Node == null){//if the node is the first node, it is root
@@ -49,15 +32,12 @@ public class AVLTree {
 	    
     //Get difference in balance function
     int getDifference (AVLNode Node){
-    	 
     	return findHeight(Node.left)-findHeight(Node.right);
-    	
     }
     
 	//finds the height of the specified Node
 	int findHeight(AVLNode Node){
 		int height = 0;
-		
 		if(Node != null){
 			int leftH = findHeight(Node.left);
 			int rightH = findHeight(Node.right);			
@@ -70,9 +50,10 @@ public class AVLTree {
 		//Node.height = height;
 		return height;
 	}
+	
 	//Right Right rotation Case
 	AVLNode rrCase(AVLNode Node){
-		
+	
 		AVLNode childR = Node.right;
 		Node.right = childR.left;
 		childR.left = Node;		
@@ -80,7 +61,7 @@ public class AVLTree {
 		
 	}
 	
-	//Left Left roation case
+	//Left Left rotation case
 	AVLNode llCase(AVLNode Node){
 		
 		AVLNode childL = Node.left;
@@ -106,18 +87,72 @@ public class AVLTree {
 		Node.left = rrCase(childL);
 		return llCase(Node);
 	}
-	//deletes the specified node from the tree
-	void deleteNode(int data){
-		if(searchValueExists(data)){
-			if(searchedNode.left == null && searchedNode.right == null){
-				searchedNode.parent = null;
-			}
-		}
+	
+	//returns right child of a node
+	AVLNode getRightChild(AVLNode n){
+		return n.right;
+	}
+	//returns left child of a node
+	AVLNode getLeftChild(AVLNode n){
+		return n.left;
 	}
 	
-	void delete(AVLNode Node){
-		//TODO: 
+	//Delete node with data if it exists
+	public boolean delete(int data){
+		AVLNode deleteMe = searchValue(data);
+		if( deleteMe != null ){
+			deleteNode(this.root, data);
+			return true;
+		}
+		return false;
 	}
+	
+	//deletes the specified node from the tree
+	AVLNode deleteNode(AVLNode root, int data){
+	    if (root == null){
+	        return root;
+	    }
+	   
+	    //Slightly different than the already implemented search for node function
+	    if ( data < root.data ){
+	        root.left = deleteNode(root.left, data);
+	    }
+	    else if( data > root.data ){
+	        root.right = deleteNode(root.right, data);
+	    }else{
+	        // node with only one child or no child
+	        if( (root.left == null) || (root.right == null) ){
+	            AVLNode temp = root.left!=null ? root.left : root.right;
+	            // No child case
+	            if(temp == null){
+	                temp = root;
+	                root = null;
+	            }else{ // One child case
+	             root = temp; 
+	            }
+	        }else{
+	            // node with two children: Get the inorder successor (smallest
+	            // in the right subtree)
+	        	AVLNode minNode = root.right;
+	        	while (minNode.left != null){
+	                minNode = minNode.left;
+	        	}
+	        	AVLNode temp = minNode;
+	            // Copy the inorder successor's data to this node
+	            root.data = temp.data;
+	            // Delete the inorder successor
+	            root.right = deleteNode(root.right, temp.data);
+	        }
+	 
+	    // If the tree had only one node then return
+	    if (root == null){
+	      return root;
+	    }
+	    checkBalance(root);
+	    }
+	    return root;
+	}
+	
 	//checks the balance of the tree
 	int checkBalance(AVLNode Node ){
 		return findHeight( Node.left ) - findHeight( Node.right );
@@ -187,5 +222,5 @@ public class AVLTree {
 		return nodeList;
 	}
 	
-	
+
 }
