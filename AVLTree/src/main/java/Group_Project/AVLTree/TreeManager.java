@@ -1,5 +1,12 @@
 package Group_Project.AVLTree;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Scanner;
+
 public class TreeManager {
 
 	AVLTree tree;
@@ -18,7 +25,7 @@ public class TreeManager {
 		return sTree;
 	}
 	
-	AVLTree deserializeTree(String serializedTree){
+	AVLTree deserializeTree(String tree){
 		AVLTree dTree = null;
 		//TODO: Implement Deserialization
 		
@@ -27,16 +34,28 @@ public class TreeManager {
 		return dTree;
 	}
 	
-	void saveTree(){
-		//TODO: NOT SURE HOW WE ARE GOING TO SAVE THE TREES YET. 
-		//PROBABLY TEXT FILE
+	void saveTree(AVLTree tree, String filename) throws FileNotFoundException{
+		String selializedTree = serializeTree(tree);		
+		PrintWriter out = new PrintWriter(filename);
+		out.println(selializedTree);
+		out.close();		
 	}
 	
-	void loadTree(AVLTree t){
-		if(t == null){
-			return;
-		}
-		this.tree = t;
+	AVLTree loadTree(AVLTree tree, String filename){
+		String a = null;
+		
+		File file = new File(filename);
+	    try {
+	        Scanner sc = new Scanner(file);
+	        while (sc.hasNext()) {
+	            a = sc.nextLine();
+	        }
+	        sc.close();
+	    } 
+	    catch (FileNotFoundException e) {
+	        e.printStackTrace();
+	    }		
+		return deserializeTree(a);
 	}
 	
 	

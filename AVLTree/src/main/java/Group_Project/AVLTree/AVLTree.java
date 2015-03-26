@@ -203,11 +203,12 @@ public class AVLTree {
 	AVLNode search(AVLNode r, int i){
 		if(r.data == i){
 			return r;
-		}else if(r.data < i){
+		}else if(r.data < i && r.right!=null){
 			return search(r.right, i);
-		}else{
+		}else if(r.data > i && r.left!=null){
 			return search(r.left, i);
 		}
+		return null;
 	}
 	
 	ArrayList<AVLNode> searchRange(int low, int high){
