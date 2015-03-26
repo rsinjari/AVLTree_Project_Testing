@@ -1,6 +1,8 @@
 package Group_Project.AVLTree;
 
 import static org.junit.Assert.*;
+import junit.framework.Assert;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -35,12 +37,25 @@ public class AVLTreeTest {
 	}
 	@Test
 	public void testFindHight(){
-		throw new RuntimeException("test method not impleented");
+		for(int i = 0; i < 3; i++){
+			t.insertNode(i);
+		}
+		assertEquals("We know that 3 nodes in a balanced tree is a height of 2 from the root ",
+				2,t.findHeight(t.root));
 		
 	}
+	
 	@Test
 	public void testDeleteNode(){
-		throw new RuntimeException("test method not impleented");
+		t.insertNode(1);
+		t.insertNode(2);
+		t.insertNode(3);
+		t.insertNode(4);
+		t.insertNode(5);
+	
+		Assert.assertTrue("Node 3 is in the tree.", t.searchValueExists(3));
+		t.delete(3);
+		assertFalse("Node 3 is removed from the tree.", t.searchValueExists(3));
 	}
 	@Test
 	public void testSearchValue(){
