@@ -106,7 +106,7 @@ public class AVLTreeTest {
 		assertEquals("Asserts that 57 is root->right->right", 57 , t.root.right.right.data);
 		assertEquals("Asserts that 20 is root->right->left child", 20 , t.root.right.left.data);
 		assertEquals("Asserts that 19 is root->right->left->left child", 19 , t.root.right.left.left.data);
-		assertEquals("Asserts that 21 is root->right->left->right child", 21 , t.root.left.right.right.data);
+		assertEquals("Asserts that 21 is root->right->left->right child", 21 , t.root.right.left.right.data);
 	}
 	@Test
 	public void testCheckBalance(){
