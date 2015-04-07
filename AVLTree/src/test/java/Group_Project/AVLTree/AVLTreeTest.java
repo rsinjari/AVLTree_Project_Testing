@@ -70,9 +70,14 @@ public class AVLTreeTest {
 		//assertNull("The root is null", t.root.data);
 		//t.delete(0);
 		//Deleting the root
-		assertNull("The root is null", t.root);
-		t.insertNode(19);
-		t.delete(19);
+		
+		t.insertNode(20);
+		t.insertNode(15);
+		t.insertNode(14);
+		t.insertNode(26);
+		assertTrue("Node 20 is in the tree", t.searchValueExists(20));		
+		t.delete(20);
+		assertFalse("Node 20 is in the tree", t.searchValueExists(20));
 		
 		//Deleting the one child case
 		t.insertNode(20);
