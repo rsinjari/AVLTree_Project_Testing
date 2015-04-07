@@ -189,7 +189,8 @@ public class AVLTreeTest {
 	}
 	@Test(expected=NullPointerException.class)
 	public void delete2(){
-		t.delete(0);
+		t.root = null;
+		t.deleteNode(t.root,0);
 	}
 	
 }
