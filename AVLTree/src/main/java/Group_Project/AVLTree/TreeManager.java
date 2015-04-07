@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.util.Scanner;
 
 public class TreeManager {
@@ -15,48 +16,78 @@ public class TreeManager {
 		this.tree = new AVLTree();
 	}
 	
-	String serializeTree(AVLTree t){
-		String sTree = null;
-		if(t == null){
-			return sTree;
-		}
-		//TODO: Implement Serialization
-		
-		return sTree;
+	//Takes a stringwriter object and writes the serialized data to the stingwriter stream.
+	void serializeTree(AVLNode n, StringWriter out){
+		 if (n==null) {
+			    out.write("$ ");
+			  } else {
+			    out.write(Integer.toString(n.data)+" ");
+			    serializeTree(n.left, out);
+			    serializeTree(n.right, out);
+			  }
 	}
 	
-	AVLTree deserializeTree(String tree){
-		AVLTree dTree = null;
-		//TODO: Implement Deserialization
+	static int deserializeCounter = 0;
+	AVLNode deserializeTree(String[] sTree){
 		
-		
-		//If tree returns as null, failed to deserialize
+		if (deserializeCounter >= sTree.length)
+            return null;
+        if (sTree[deserializeCounter].equals("$")) {
+        	deserializeCounter++;
+            return null;
+        }
+
+        int data = Integer.parseInt(sTree[deserializeCounter]);
+        AVLNode dTree = new AVLNode(data);
+        deserializeCounter++;
+        dTree.left = deserializeTree(sTree);
+        dTree.right = deserializeTree(sTree);
+	
 		return dTree;
 	}
 	
-	void saveTree(AVLTree tree, String filename) throws FileNotFoundException{
-		String selializedTree = serializeTree(tree);		
-		PrintWriter out = new PrintWriter(filename);
-		out.println(selializedTree);
-		out.close();		
+	String saveTree(AVLTree tree, String filename){
+		String sTree = null;	
+		PrintWriter fileOut;
+		try {
+			fileOut = new PrintWriter(filename);
+			StringWriter out = new StringWriter();
+			serializeTree(tree.root, out);
+			sTree = out.toString();
+			fileOut.write(sTree);
+			fileOut.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		return sTree;
 	}
 	
-	AVLTree loadTree(AVLTree tree, String filename){
-		String a = null;
-		
+	void loadTree(String filename){
+		String s = null;
 		File file = new File(filename);
 	    try {
 	        Scanner sc = new Scanner(file);
 	        while (sc.hasNext()) {
-	            a = sc.nextLine();
+	            s = sc.nextLine();
 	        }
 	        sc.close();
 	    } 
+	    
 	    catch (FileNotFoundException e) {
 	        e.printStackTrace();
 	    }		
-		return deserializeTree(a);
+		
+	    this.createTree();
+	    String delims = "[ ]+";
+		String[] sTree = s.split(delims);
+	    deserializeCounter = 0;
+	    this.tree.root = deserializeTree(sTree);
+	    
 	}
+	
+	
+	
+	
 	
 	
 	//Debugging prints

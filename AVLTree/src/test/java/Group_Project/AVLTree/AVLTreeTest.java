@@ -35,6 +35,7 @@ public class AVLTreeTest {
 		assertEquals("Assets position of 5",5,t.root.right.data);
 		
 	}
+	
 	@Test
 	public void testFindHight(){
 		for(int i = 0; i < 3; i++){
@@ -42,7 +43,6 @@ public class AVLTreeTest {
 		}
 		assertEquals("We know that 3 nodes in a balanced tree is a height of 2 from the root ",
 				2,t.findHeight(t.root));
-		
 	}
 	
 	@Test

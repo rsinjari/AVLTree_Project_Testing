@@ -1,5 +1,6 @@
 package Group_Project.AVLTree;
 
+import java.io.StringWriter;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -25,22 +26,44 @@ public class ITTreeManagerTest {
 	}
 	
 	@Test
-	public void testLoadTree(){
-		throw new RuntimeException("test method not implemented");
-	}
-	
-	@Test
-	public void testsaveTree(){
-		throw new RuntimeException("test method not implemented");
-	}
-	
-	@Test
 	public void testSerializeTree(){
-		throw new RuntimeException("test method not implemented");
+		tm.createTree();
+		StringWriter out = new StringWriter();
+		tm.tree.insertNode(30);
+		tm.tree.insertNode(10);
+		tm.tree.insertNode(5);
+		tm.serializeTree(tm.tree.root, out);
+		
+		Assert.assertNotNull(tm.tree);
+		Assert.assertEquals("Strings are the same: ", out.toString(), "10 5 $ $ 30 $ $ ");
+		
 	}
 	
 	@Test
 	public void testDeSerializeTree(){
-		throw new RuntimeException("test method not implemented");
+		tm.createTree();
+		String[] s = {"10","5","$","$","30","$","$"};
+		
+		tm.tree.root = tm.deserializeTree(s);
+		
+		Assert.assertNotNull(tm.tree.root);
+		Assert.assertEquals("The root should be 10: ", tm.tree.root.data, 10);
+		Assert.assertEquals("Left child of root should be 5: ", tm.tree.root.left.data, 5);
+		Assert.assertEquals("Right child of root should be 30: ", tm.tree.root.right.data, 30);
+		
 	}
+	
+	@Test
+	public void testsaveTree(){
+		
+	}
+	
+	@Test
+	public void testLoadTree(){
+		
+	}
+	
+	
+	
+	
 }
