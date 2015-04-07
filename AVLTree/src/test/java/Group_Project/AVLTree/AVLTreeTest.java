@@ -70,7 +70,7 @@ public class AVLTreeTest {
 		//assertNull("The root is null", t.root.data);
 		//t.delete(0);
 		//Deleting the root
-		assertNull("The root is null", t.root.data);
+		assertNull("The root is null", t.root);
 		t.insertNode(19);
 		t.delete(19);
 		
