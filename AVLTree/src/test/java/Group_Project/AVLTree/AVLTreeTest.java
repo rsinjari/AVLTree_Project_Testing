@@ -37,6 +37,22 @@ public class AVLTreeTest {
 		assertEquals("Assets position of 6",6,t.root.right.right.data);
 		assertEquals("Assets position of 5",5,t.root.right.data);
 		
+		t.insertNode(10);
+		t.insertNode(12);
+		t.insertNode(13);
+		t.insertNode(14);
+		assertEquals("Assets root is 5",5,t.root.data);
+		assertEquals("Assets root->left is 2",2,t.root.left.data);
+		assertEquals("Assets root->left->left is 1",1,t.root.left.left.data);
+		assertEquals("Assets root->left->right is 4",4,t.root.left.right.data);
+		
+		assertEquals("Assets root->right is 10",4,t.root.right.data);
+		assertEquals("Assets root->right->left is 6",6,t.root.right.left.data);
+		assertEquals("Assets root->right->right is 13",13,t.root.right.right.data);
+		assertEquals("Assets root->right->right->left is 12",12,t.root.right.right.left.data);
+		assertEquals("Assets root->right->right->right is 14",14,t.root.right.right.right.data);
+		
+		
 	}
 	
 	@Test
