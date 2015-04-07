@@ -1,6 +1,9 @@
 package Group_Project.AVLTree;
 
 import static org.junit.Assert.*;
+
+import java.util.ArrayList;
+
 import junit.framework.Assert;
 
 import org.junit.Before;
@@ -126,6 +129,27 @@ public class AVLTreeTest {
 		assertTrue("Checking that the tree is empty and returns null.",t.isEmpty());
 		t.insertNode(10);
 		assertFalse("Checking that there is a root and its not null",t.isEmpty());
+	}
+	@Test
+	public void searchRange(){
+		t.insertNode(1);
+		assertEquals("Testing the hight of root", 1, t.findHeight(t.root));
+		t.insertNode(6);
+		t.insertNode(0);
+		t.insertNode(20);
+		t.insertNode(25);
+		t.insertNode(30);
+		t.insertNode(35);
+		t.insertNode(45);
+		t.insertNode(55);
+		
+		int [] aa = {20, 25, 30};
+		ArrayList<AVLNode> a = t.searchRange(19, 31);
+		
+		for(int i = 0; i < a.size(); i++){
+			assertEquals("Testing searchRange with given variables ", aa[i], a.get(i).data);
+		}
+		
 	}
 	
 }
