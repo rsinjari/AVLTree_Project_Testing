@@ -66,10 +66,10 @@ public class AVLTreeTest {
 	
 	@Test
 	public void testDeleteNode(){
-		//Deleting empty tree
-		//assertNull("The root is null", t.root.data);
-		//t.delete(0);
-		//Deleting the root
+		
+		t.insertNode(19);
+		t.delete(19);
+		assertFalse("Node 19 is not in the tree anymore",t.searchValueExists(19));
 		
 		t.insertNode(20);
 		t.insertNode(15);
@@ -86,6 +86,7 @@ public class AVLTreeTest {
 		t.delete(15);
 		assertFalse("Node 15 is in the tree", t.searchValueExists(15));
 		t.delete(20);
+		
 		//Deleting a node
 		t.insertNode(1);
 		t.insertNode(2);
