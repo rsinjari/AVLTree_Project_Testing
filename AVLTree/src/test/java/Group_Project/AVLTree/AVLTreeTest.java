@@ -42,8 +42,8 @@ public class AVLTreeTest {
 		t.insertNode(13);
 		t.insertNode(14);
 		assertEquals("Assets root is 5",5,t.root.data);
-		assertEquals("Assets root->left is 2",2,t.root.left.data);
-		assertEquals("Assets root->left->left is 1",1,t.root.left.left.data);
+		assertEquals("Assets root->left is 1",1,t.root.left.data);
+		assertEquals("Assets root->left->left is 0",0,t.root.left.left.data);
 		assertEquals("Assets root->left->right is 4",4,t.root.left.right.data);
 		
 		assertEquals("Assets root->right is 10",4,t.root.right.data);
