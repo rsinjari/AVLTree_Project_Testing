@@ -90,6 +90,23 @@ public class AVLTreeTest {
 		assertEquals("Asserts that 19 is the right childs left child", 19 , t.root.right.left.data);
 		assertEquals("Asserts that 57 is the left childs right child", 57 , t.root.right.right.data);
 		assertEquals("Asserts that 10 is the left child right child", 10 , t.root.left.right.data);
+		t.insertNode(20);
+		t.insertNode(21);
+		t.insertNode(12);
+		t.insertNode(15);
+		t.insertNode(14);
+		assertEquals("Asserts that 17 is the root", 17 , t.root.data);
+		assertEquals("Asserts that 10 is the left child", 10 , t.root.left.data);
+		assertEquals("Asserts that 25 is the right child", 25 , t.root.right.data);
+		assertEquals("Asserts that 1 is root->left->left", 1 , t.root.left.left.data);
+		assertEquals("Asserts that 14 is root->left->right child", 14 , t.root.left.right.data);
+		assertEquals("Asserts that 12 is root->left->right->left child", 12 , t.root.left.right.left.data);
+		assertEquals("Asserts that 15 is root->left->right->right child", 15 , t.root.left.right.right.data);
+		
+		assertEquals("Asserts that 57 is root->right->right", 57 , t.root.right.right.data);
+		assertEquals("Asserts that 20 is root->right->left child", 20 , t.root.right.left.data);
+		assertEquals("Asserts that 19 is root->right->left->left child", 19 , t.root.right.left.left.data);
+		assertEquals("Asserts that 21 is root->right->left->right child", 21 , t.root.left.right.right.data);
 	}
 	@Test
 	public void testCheckBalance(){
@@ -110,4 +127,5 @@ public class AVLTreeTest {
 		t.insertNode(10);
 		assertFalse("Checking that there is a root and its not null",t.isEmpty());
 	}
+	
 }

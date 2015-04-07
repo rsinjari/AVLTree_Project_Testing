@@ -88,15 +88,6 @@ public class AVLTree {
 		return llCase(Node);
 	}
 	
-	//returns right child of a node
-	AVLNode getRightChild(AVLNode n){
-		return n.right;
-	}
-	//returns left child of a node
-	AVLNode getLeftChild(AVLNode n){
-		return n.left;
-	}
-	
 	//Delete node with data if it exists
 	public boolean delete(int data){
 		AVLNode deleteMe = searchValue(data);
