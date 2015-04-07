@@ -96,6 +96,9 @@ public class AVLTreeTest {
 		
 		assertFalse("Node 6 doesnt exist.", t.searchValueExists(6));
 		t.delete(6);
+		
+		t.root = null;
+		t.deleteNode(t.root,0);
 	}
 	@Test
 	public void testSearchValue(){
@@ -187,10 +190,10 @@ public class AVLTreeTest {
 			assertEquals("Testing searchRange with given variables ", aa[i], a.get(i).data);
 		}		
 	}
-	@Test(expected=NullPointerException.class)
+	/*@Test(expected=NullPointerException.class)
 	public void delete2(){
 		t.root = null;
 		t.deleteNode(t.root,0);
-	}
+	}*/
 	
 }
