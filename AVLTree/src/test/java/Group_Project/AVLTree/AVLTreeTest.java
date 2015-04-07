@@ -185,8 +185,11 @@ public class AVLTreeTest {
 		
 		for(int i = 0; i < a.size(); i++){
 			assertEquals("Testing searchRange with given variables ", aa[i], a.get(i).data);
-		}
-		
+		}		
+	}
+	@Test(expected=IndexOutOfBoundsException.class)
+	public void delete2(){
+		t.delete(0);
 	}
 	
 }
