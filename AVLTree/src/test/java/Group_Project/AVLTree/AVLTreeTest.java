@@ -46,7 +46,7 @@ public class AVLTreeTest {
 		assertEquals("Assets root->left->left is 0",0,t.root.left.left.data);
 		assertEquals("Assets root->left->right is 4",4,t.root.left.right.data);
 		
-		assertEquals("Assets root->right is 10",4,t.root.right.data);
+		assertEquals("Assets root->right is 10",10,t.root.right.data);
 		assertEquals("Assets root->right->left is 6",6,t.root.right.left.data);
 		assertEquals("Assets root->right->right is 13",13,t.root.right.right.data);
 		assertEquals("Assets root->right->right->left is 12",12,t.root.right.right.left.data);
