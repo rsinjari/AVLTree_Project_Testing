@@ -56,9 +56,12 @@ public class AVLTreeTest {
 		t.insertNode(4);
 		t.insertNode(5);
 	
-		Assert.assertTrue("Node 3 is in the tree.", t.searchValueExists(3));
+		assertTrue("Node 3 is in the tree.", t.searchValueExists(3));
 		t.delete(3);
 		assertFalse("Node 3 is removed from the tree.", t.searchValueExists(3));
+		
+		assertFalse("Node 6 doesnt exist.", t.searchValueExists(6));
+		t.delete(6);
 	}
 	@Test
 	public void testSearchValue(){
