@@ -1,6 +1,9 @@
 package Group_Project.AVLTree;
 
+import static org.junit.Assert.*;
+
 import java.io.StringWriter;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -42,6 +45,10 @@ public class ITTreeManagerTest {
 	@Test
 	public void testDeSerializeTree(){
 		tm.createTree();
+		String [] ss = {};
+		tm.tree.root = tm.deserializeTree(ss);
+		assertNull(tm.tree.root);
+		
 		String[] s = {"10","5","$","$","30","$","$"};
 		
 		tm.tree.root = tm.deserializeTree(s);
