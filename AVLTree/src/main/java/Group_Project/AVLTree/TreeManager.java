@@ -88,7 +88,7 @@ public class TreeManager {
 	
 	
 	
-	
+	/*
 	
 	//Debugging prints
 	void inorderPrint(AVLNode n){	
@@ -119,5 +119,5 @@ public class TreeManager {
 			postorderPrint(n.right);
 			System.out.print(n.data+" ");
 		}
-	}
+	}*/
 }

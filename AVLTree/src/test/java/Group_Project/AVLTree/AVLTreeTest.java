@@ -99,6 +99,7 @@ public class AVLTreeTest {
 		
 		t.root = null;
 		t.deleteNode(t.root,0);
+		
 	}
 	@Test
 	public void testSearchValue(){
@@ -189,11 +190,5 @@ public class AVLTreeTest {
 		for(int i = 0; i < a.size(); i++){
 			assertEquals("Testing searchRange with given variables ", aa[i], a.get(i).data);
 		}		
-	}
-	/*@Test(expected=NullPointerException.class)
-	public void delete2(){
-		t.root = null;
-		t.deleteNode(t.root,0);
-	}*/
-	
+	}	
 }
