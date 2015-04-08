@@ -46,7 +46,7 @@ public class TreeManager {
 		return dTree;
 	}
 	
-	String saveTree(AVLTree tree, String filename){
+	/*String saveTree(AVLTree tree, String filename){
 		String sTree = null;	
 		PrintWriter fileOut;
 		try {

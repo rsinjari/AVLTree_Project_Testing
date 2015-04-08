@@ -62,7 +62,7 @@ public class ITTreeManagerTest {
 		Assert.assertEquals("Right child of root should be 30: ", tm.tree.root.right.data, 30);
 		
 	}
-	
+	/*
 	@Test
 	public void testsaveTree(){
 		tm.createTree();
@@ -87,8 +87,8 @@ public class ITTreeManagerTest {
 		}
 		sc.close();		
 		
-	    assertEquals(expected, s);*/
-	}
+	    assertEquals(expected, s);
+	}*/
 	
 	
 }
