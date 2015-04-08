@@ -65,12 +65,19 @@ public class ITTreeManagerTest {
 	
 	@Test
 	public void testsaveTree(){
-		
+		tm.createTree();
+		tm.tree.insertNode(12);
+		tm.tree.insertNode(25);
+		tm.tree.insertNode(5);
+		String expected = "5 12 25";
+		String a = tm.saveTree(tm.tree, "filename");
+		assertEquals("Testing save tree",expected, a);
 	}
 	
 	@Test
 	public void testLoadTree() throws FileNotFoundException{
-		String s = " ";
+		/*String s = " ";	
+		
 		String testFileName = "testSerialize.txt";
 	    String expected = "10 5 $ $ 30 $ $ ";
 	    
@@ -80,10 +87,8 @@ public class ITTreeManagerTest {
 		}
 		sc.close();		
 		
-	    assertEquals(expected, s);
+	    assertEquals(expected, s);*/
 	}
-	
-	
 	
 	
 }
