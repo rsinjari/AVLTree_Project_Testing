@@ -2,7 +2,10 @@ package Group_Project.AVLTree;
 
 import static org.junit.Assert.*;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.StringWriter;
+import java.util.Scanner;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -66,8 +69,18 @@ public class ITTreeManagerTest {
 	}
 	
 	@Test
-	public void testLoadTree(){
+	public void testLoadTree() throws FileNotFoundException{
+		String s = " ";
+		String testFileName = "testSerialize.txt";
+	    String expected = "10 5 $ $ 30 $ $ ";
+	    
+	    Scanner sc = new Scanner(testFileName);
+		while (sc.hasNext()) {
+		    s = sc.nextLine();
+		}
+		sc.close();		
 		
+	    assertEquals(expected, s);
 	}
 	
 	
