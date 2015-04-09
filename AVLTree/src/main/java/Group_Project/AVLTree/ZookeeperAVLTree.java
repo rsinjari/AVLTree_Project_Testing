@@ -307,7 +307,7 @@ public class ZookeeperAVLTree {
     }
 	
   //Debugging prints
-  	void inorderPrint(ZookeeperAVLNode n){	
+  	/*void inorderPrint(ZookeeperAVLNode n){	
   		if(n == null){
   			return;
   		}else{
@@ -315,7 +315,7 @@ public class ZookeeperAVLTree {
   			System.out.print(n.data+" ");
   			inorderPrint(getNodeByAddress(n.right));
   		}
-  	}
+  	}*/
   	
   	void inorderCreateDummy(ZookeeperAVLNode n, AVLTree tempTree){	
   		if(n == null){
