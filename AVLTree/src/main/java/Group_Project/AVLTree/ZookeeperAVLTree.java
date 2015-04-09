@@ -31,9 +31,6 @@ public class ZookeeperAVLTree {
                 }          
         });
     }
-    public void process(WatchedEvent event) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
 
     ZookeeperAVLTree(){
     	try {
