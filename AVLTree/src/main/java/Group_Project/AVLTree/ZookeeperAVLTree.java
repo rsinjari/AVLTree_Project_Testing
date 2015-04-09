@@ -82,11 +82,52 @@ public class ZookeeperAVLTree {
 			updateNode(Node);
 	         return Node;
 		}
+		
+		public ZookeeperAVLNode searchValue(int i){	
+			ZookeeperAVLNode n = search(this.root, i);
+			if(n != null){
+				return n;
+			}
+			return null;
+		}
+		
+		private ZookeeperAVLNode search(ZookeeperAVLNode r, int i){
+			if(r.data == i){
+				return r;
+			}else if(r.data < i && r.right!=null){
+				return search(getNodeByAddress(r.right), i);
+			}else if(r.data > i && r.left!=null){
+				return search(getNodeByAddress(r.left), i);
+			}
+			return null;
+		}
+		
+		//Delete node with data if it exists
+		public boolean delete(int data){
+			ZookeeperAVLNode deleteMe = searchValue(data);
+			if( deleteMe != null ){
+				deleteNode(this.root, data);
+				return true;
+			}
+			return false;
+		}
+		
+		//deletes the specified node from the tree
+		private void deleteNode(ZookeeperAVLNode root, int data){
+		   
+		  AVLTree tempTree = new AVLTree();
+		  inorderCreateDummy(root, tempTree);
+		  tempTree.delete(data);
+		  this.root = null;
+		  inorderCreate(tempTree.root);
+		}
+		
+		
 		    
 	    //Get difference in balance function
 	    int getDifference (ZookeeperAVLNode Node){
 	    	int height = findHeight( getNodeByAddress(Node.left) ) - findHeight( getNodeByAddress(Node.right) );
-			System.out.println("Height of"+Node.left+" and "+Node.right+"Height was found to be: "+height);
+			//System.out.println("Height of"+Node.left+" and "+Node.right+"Height was found to be: "+height);
 			return  height;
 	    }
 	    
@@ -204,6 +245,9 @@ public class ZookeeperAVLTree {
 	}
 	//updates node location with new information if it already existed in the database
 	void updateNode(ZookeeperAVLNode node){
+		if(node == null){
+			return;
+		}
 		Stat stat;
 		try {
 			 stat = zooKeeper.exists(node.location, false);
@@ -272,5 +316,27 @@ public class ZookeeperAVLTree {
   			inorderPrint(getNodeByAddress(n.right));
   		}
   	}
+  	
+  	void inorderCreateDummy(ZookeeperAVLNode n, AVLTree tempTree){	
+  		if(n == null){
+  			return;
+  		}else{
+  			inorderCreateDummy(getNodeByAddress(n.left), tempTree);
+  			tempTree.insertNode(n.data);
+  			inorderCreateDummy(getNodeByAddress(n.right), tempTree);
+  		}
+  	}
+  	void inorderCreate(AVLNode n){	
+  		if(n == null){
+  			return;
+  		}else{
+  			inorderCreate(n.left);
+  			this.insertNode(n.data);
+  			inorderCreate(n.right);
+  		}
+  	}
 	
+  	boolean isEmpty(){
+		return root == null;
+	}
 }

@@ -148,15 +148,11 @@ public class AVLTree {
 	    if (root == null){
 	      return root;
 	    }
-	    checkBalance(root);
+	    balanceTree(root);
 	    }
 	    return root;
 	}
 	
-	//checks the balance of the tree
-	int checkBalance(AVLNode Node ){
-		return findHeight( Node.left ) - findHeight( Node.right );
-	}
 	//balances the tree when its not balanced
 	AVLNode balanceTree(AVLNode Node){
 		if(getDifference(Node) > 1){
