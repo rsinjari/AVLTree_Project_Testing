@@ -22,7 +22,7 @@ public class ITTreeManagerTest {
 	
 	@Test
 	public void testCreateTree(){
-		tm.createTree();
+		tm.createTree(false);
 		
 		tm.tree.insertNode(5);
 		tm.tree.insertNode(6);
@@ -33,7 +33,7 @@ public class ITTreeManagerTest {
 	
 	@Test
 	public void testSerializeTree(){
-		tm.createTree();
+		tm.createTree(false);
 		StringWriter out = new StringWriter();
 		tm.tree.insertNode(30);
 		tm.tree.insertNode(10);
@@ -47,7 +47,7 @@ public class ITTreeManagerTest {
 	
 	@Test
 	public void testDeSerializeTree(){
-		tm.createTree();
+		tm.createTree(false);
 		String [] ss = {};
 		tm.tree.root = tm.deserializeTree(ss);
 		assertNull(tm.tree.root);

@@ -10,20 +10,39 @@ import java.util.Scanner;
 
 public class TreeManager {
 
-	AVLTree tree;
+	AVLTree tree = null;
+	ZookeeperAVLTree zootree = null;
+	static boolean isZookeeper = false;
 	
-	void createTree(){
-		this.tree = new AVLTree();
+	void createTree(boolean isZookeeper){
+		this.isZookeeper = isZookeeper;
+		if(isZookeeper){
+			this.zootree = new ZookeeperAVLTree();			
+		}
+		else{
+			this.tree = new AVLTree();
+		}		
 	}
 	
-	//Takes a stringwriter object and writes the serialized data to the stingwriter stream.
-	void serializeTree(AVLNode n, StringWriter out){
-		 if (n==null) {
+	String serialize(){
+		StringWriter out = new StringWriter();
+		String s;
+		if(isZookeeper){
+			serializeZooTree( zootree.root, out);
+		}else{
+			serializeTree(tree.root, out);
+		}
+		return s = out.toString();		
+	}
+	
+	//Takes a string writer object and writes the serialized data to the stingwriter stream.
+	void serializeTree(AVLNode root, StringWriter out){
+		 if (root==null) {
 			    out.write("$ ");
 			  } else {
-			    out.write(Integer.toString(n.data)+" ");
-			    serializeTree(n.left, out);
-			    serializeTree(n.right, out);
+			    out.write(Integer.toString(root.data)+" ");
+			    serializeTree(root.left, out);
+			    serializeTree(root.right, out);
 			  }
 	}
 	
@@ -46,6 +65,17 @@ public class TreeManager {
 		return dTree;
 	}
 	
+	
+	void serializeZooTree(ZookeeperAVLNode root, StringWriter out){
+		 if (root==null) {
+			    out.write("$ ");
+			  } else {
+			    out.write(Integer.toString(root.data)+" ");
+			    serializeZooTree(zootree.getNodeByAddress(root.left), out);
+			    serializeZooTree(zootree.getNodeByAddress(root.right), out);
+			  }
+	}
+
 	/*String saveTree(AVLTree tree, String filename){
 		String sTree = null;	
 		PrintWriter fileOut;
@@ -84,10 +114,6 @@ public class TreeManager {
 	    this.tree.root = deserializeTree(sTree);
 	    
 	}
-	
-	
-	
-	
 	/*
 	
 	//Debugging prints

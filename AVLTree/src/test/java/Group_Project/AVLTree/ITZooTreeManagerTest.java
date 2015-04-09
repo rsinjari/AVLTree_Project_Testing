@@ -1,30 +1,45 @@
 package Group_Project.AVLTree;
 
+import static org.junit.Assert.assertNull;
+
+import java.io.StringWriter;
+
+import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 public class ITZooTreeManagerTest {
+	
+	TreeManager tm;
+	
+	@Before
+	public void initialize(){
+		tm = new TreeManager();
+	}
+	
 	@Test
 	public void testCreateTree(){
-		//throw new RuntimeException("test method not implemented");
+		tm.createTree(true);
+		
+		tm.zootree.insertNode(5);
+		tm.zootree.insertNode(6);
+		tm.zootree.insertNode(4);
+		
+		Assert.assertNotNull(tm.zootree);
 	}
 	
-	@Test
-	public void testLoadTree(){
-		//throw new RuntimeException("test method not implemented");
-	}
-	
-	@Test
-	public void testsaveTree(){
-		//throw new RuntimeException("test method not implemented");
-	}
 	
 	@Test
 	public void testSerializeTree(){
-		//throw new RuntimeException("test method not implemented");
+		tm.createTree(true);
+		StringWriter out = new StringWriter();
+		tm.zootree.insertNode(30);
+		tm.zootree.insertNode(10);
+		tm.zootree.insertNode(5);
+		tm.serializeZooTree(tm.zootree.root, out);
+		
+		Assert.assertNotNull(tm.zootree);
+		Assert.assertEquals("Strings are the same: ", out.toString(), "10 5 $ $ 30 $ $ ");
 	}
-	
-	@Test
-	public void testDeSerializeTree(){
-		//throw new RuntimeException("test method not implemented");
-	}
+
 }
