@@ -37,9 +37,10 @@ public class ITZooTreeManagerTest {
 		tm.zootree.insertNode(10);
 		tm.zootree.insertNode(5);
 		tm.serializeZooTree(tm.zootree.root, out);
-		
+		String s = tm.serialize();
 		Assert.assertNotNull(tm.zootree);
 		Assert.assertEquals("Strings are the same: ", out.toString(), "10 5 $ $ 30 $ $ ");
+		Assert.assertEquals("Strings are the same: ", s, "10 5 $ $ 30 $ $ ");
 	}
 
 }
