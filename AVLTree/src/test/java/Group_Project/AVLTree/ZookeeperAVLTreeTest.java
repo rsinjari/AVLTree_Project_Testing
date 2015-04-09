@@ -113,9 +113,11 @@ public class ZookeeperAVLTreeTest {
 	}
 	@Test
 	public void testUpdateNode(){
+		int epoch = Math.abs((int) System.currentTimeMillis());
+		//System.out.println(epoch);
 		t.updateNode(null);
-		ZookeeperAVLNode a = new ZookeeperAVLNode(null, null, 9999);
+		ZookeeperAVLNode a = new ZookeeperAVLNode(null, null, epoch);
 		t.updateNode(a);
-		assertEquals("Testing the updateed data", 9999, t.getNodeByAddress(a.location).data);
+		assertEquals("Testing the updateed data", epoch, t.getNodeByAddress(a.location).data);
 	}
 }
