@@ -10,9 +10,6 @@ public class ZookeeperAVLNode implements Serializable {
 	public int data;
 	public String location;
 	
-	public ZookeeperAVLNode(){
-		
-	}
 	
 	public ZookeeperAVLNode(String left, String right, int data){
 		this.left= left;

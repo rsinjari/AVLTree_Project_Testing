@@ -1,5 +1,7 @@
 package Group_Project.AVLTree;
 
+import static org.junit.Assert.*;
+
 import org.apache.zookeeper.KeeperException;
 import org.junit.Assert;
 import org.junit.Before;
@@ -24,6 +26,11 @@ public class ZookeeperAVLTreeTest {
 		Assert.assertEquals(t.root.data, 2);
 		Assert.assertEquals((t.getNodeByAddress(t.root.left)).data, 1);
 		Assert.assertEquals((t.getNodeByAddress(t.root.right)).data, 3);
+	}
+	@Test//(expected )
+	public void testGetNodeByAddress(){
+		ZookeeperAVLNode s = t.getNodeByAddress("/wrong address");
+		assertNull("Wronf address testing", s);
 	}
 	
 	@Test

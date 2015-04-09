@@ -46,7 +46,7 @@ public class TreeManager {
 		return dTree;
 	}
 	
-	String saveTree(AVLTree tree, String filename){
+	/*String saveTree(AVLTree tree, String filename){
 		String sTree = null;	
 		PrintWriter fileOut;
 		try {
@@ -88,7 +88,7 @@ public class TreeManager {
 	
 	
 	
-	
+	/*
 	
 	//Debugging prints
 	void inorderPrint(AVLNode n){	
@@ -119,5 +119,5 @@ public class TreeManager {
 			postorderPrint(n.right);
 			System.out.print(n.data+" ");
 		}
-	}
+	}*/
 }

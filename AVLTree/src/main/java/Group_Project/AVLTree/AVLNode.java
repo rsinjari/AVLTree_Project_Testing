@@ -12,9 +12,6 @@ public class AVLNode {
 	public int data;
 	public int height;
 	
-	public AVLNode(){
-		
-	}
 	public AVLNode(int data){
 		this.data = data;
 	}
