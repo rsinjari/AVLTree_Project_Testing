@@ -97,19 +97,6 @@ public class ZookeeperAVLTreeTest {
 		assertEquals("Assets root->right->right is 13",13,t.getNodeByAddress(t.getNodeByAddress(t.root.right).right).data);
 		assertEquals("Assets root->right->right->left is 12",12,t.getNodeByAddress(t.getNodeByAddress(t.getNodeByAddress(t.root.right).right).left).data);
 		assertEquals("Assets root->right->right->right is 14",14,t.getNodeByAddress(t.getNodeByAddress(t.getNodeByAddress(t.root.right).right).right).data);
-		
-		
-		
-		/*t.insertNode(25);
-		t.insertNode(57);
-		t.insertNode(17);
-		t.insertNode(1);
-		t.insertNode(19);
-		Assert.assertEquals("Asserts that 25 is the root", 25 , t.root.data);
-		Assert.assertEquals("Asserts that 17 is the left child", 17 , (t.getNodeByAddress(t.root.left)).data);
-		Assert.assertEquals("Asserts that 57 is the right child", 57 ,(t.getNodeByAddress(t.root.right)).data);
-		Assert.assertEquals("Asserts that 1 is the left childs left child", 1 ,(t.getNodeByAddress((t.getNodeByAddress(t.root.left)).left)).data);
-		Assert.assertEquals("Asserts that 19 is the left childs right child", 19 , (t.getNodeByAddress((t.getNodeByAddress(t.root.left)).right)).data);*/
 	}
 	@Test
 	public void testCheckBalance(){
@@ -123,5 +110,12 @@ public class ZookeeperAVLTreeTest {
 	@Test
 	public void testIsEmpty(){
 		Assert.assertTrue(t.isEmpty());
+	}
+	@Test
+	public void testUpdateNode(){
+		t.updateNode(null);
+		ZookeeperAVLNode a = new ZookeeperAVLNode(null, null, 9999);
+		t.updateNode(a);
+		assertEquals("Testing the updateed data", 9999, t.getNodeByAddress(a.location).data);
 	}
 }
