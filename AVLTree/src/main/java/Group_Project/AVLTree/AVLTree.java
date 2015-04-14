@@ -139,7 +139,7 @@ public class AVLTree {
 	    if (root == null){
 	      return root;
 	    }
-	    checkBalance(root);
+	    balanceTree(root);
 	    }
 	    return root;
 	}
