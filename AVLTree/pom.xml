@@ -83,18 +83,18 @@
             </executions>
           </plugin>
           
+          
+          
           <plugin>
 	              <groupId>org.jacoco</groupId>
 	              <artifactId>jacoco-maven-plugin</artifactId>
-	              <version>0.6.4.201312101107</version>
-	              
+	              <version>0.7.4.201502262128</version>
 	              <executions>
 	                  <execution>
 	                      <id>jacoco-prepare-agent</id>
 	                      <goals>
 	                          <goal>prepare-agent</goal>
 	                      </goals>
-	                      
 	                  </execution>
 	                  <execution>
 	                      <id>jacoco-prepare-agent-integration</id>
@@ -104,14 +104,6 @@
 	                  </execution>
 	                  <execution>
 	                      <id>jacoco-report</id>
-	                      	                      	              <configuration>
-          				<excludes>
-            				<exclude>**/DelaunayTriangulator*</exclude>
-            				<exclude>**/JDelaunayFrame*</exclude>
-            				<exclude>**/JDrawingPanel*</exclude>
-            				<exclude>**/DelaunayModule*</exclude>
-          				</excludes>
-        			</configuration>
 	                      <goals>
 	                          <goal>report</goal>
 	                      </goals>
@@ -121,16 +113,6 @@
 	                      <goals>
 	                          <goal>report-integration</goal>
 	                      </goals>
-	                      	              <configuration>
-          				<excludes>
-            				<exclude>**/JDelaunayFrame*</exclude>
-            				<exclude>**/JDrawingPanel*</exclude>
-            				<exclude>**/DelaunayModule*</exclude>
-            				<exclude>**/Vector3*</exclude>
-            				<exclude>**/VectorCalculatorImpl*</exclude>
-          				</excludes>
-        			</configuration>
-	                      
 	                  </execution>
 	                  <execution>
 	                      <id>jacoco-check</id>
@@ -143,6 +125,12 @@
 	                  </execution>
 	              </executions>
         </plugin>
+          
+          
+          
+          
+          
+          
                 <plugin>
             <groupId>org.codehaus.mojo</groupId>
             <artifactId>exec-maven-plugin</artifactId>
