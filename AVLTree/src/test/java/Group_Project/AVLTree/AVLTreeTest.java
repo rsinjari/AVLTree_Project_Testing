@@ -154,6 +154,7 @@ public class AVLTreeTest {
 	}
 	@Test
 	public void testCheckBalance(){
+		
 		t.insertNode(1);
 		assertEquals("Testing the hight of root", 1, t.findHeight(t.root));
 		t.insertNode(6);
